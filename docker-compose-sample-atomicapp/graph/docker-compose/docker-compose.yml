@@ -1,0 +1,12 @@
+wordpress:
+  image: $wordpress_image
+  links:
+    - db:mysql
+  ports:
+    - $public_port:80
+
+db:
+  image: $mariadb_image
+  environment:
+    MYSQL_ROOT_PASSWORD: $db_pass
+

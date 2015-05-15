@@ -1,0 +1,27 @@
+---
+specversion: 0.0.1-alpha
+id: docker-compose-sample-atomicapp
+metadata:
+  name: docker-compose sample atomicapp
+  appversion: 0.0.1
+  description: >
+    This is a nulecule wrapping the wordpress example for docker-compose. First, as a test of the 
+    docker-compose provider in atomicapp. Second, as an example of using docker-compose in a nulecule.
+graph:
+  docker-compose-sample:
+    params:
+      db_pass:
+        description: database root user password
+        default: example
+      public_port:
+        description: what port should we expose wp on
+        default: 8080
+      wordpress_image:
+        description: the image to use for wordpress
+        default: wordpress
+      mariadb_image:
+        description: the image to use for mariadb
+        default: mariadb
+    artifacts:
+      docker-compose:
+        - file://graph/docker-compose/docker-compose.yml
